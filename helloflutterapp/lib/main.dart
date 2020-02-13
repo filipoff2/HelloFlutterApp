@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:helloflutterapp/moreDetailPage.dart';
 
 import 'dashboard.dart';
 
@@ -119,10 +120,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   print(nameController.text);
                   print(passwordController.text);
 
+                  //Navigator.push(
+                  //  context,
+                  //  MaterialPageRoute(builder: (context) => DashboardPage(todo: nameController.text)),
+                  //);
+
                   Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => DashboardPage(todo: nameController.text)),
-                  );
+                        context,
+                        MaterialPageRoute(builder: (context) => MoreDetailPage())
+                      );
+
                 },
               ),
 
