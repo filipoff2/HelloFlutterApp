@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'dashboard.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -116,8 +118,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: (){
                   print(nameController.text);
                   print(passwordController.text);
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DashboardPage(todo: nameController.text)),
+                  );
                 },
-              )
+              ),
+
             ],
           )
       )
