@@ -45,23 +45,28 @@ class DetailPage extends StatelessWidget {
       ),
     );
 
+    var stars = FavoriteWidget();
+    //stars.toggleFavorite(3);
 
     return Scaffold(
       appBar: AppBar(
         title: Text(todo),
       ),
-      body: Column(
-        children: <Widget>[
-          Hero(
-            tag: "me",
-            child: Image.asset('assets/images/me.jpg'),
-          ),
-          Text(
-            "Trying being open-minded:",
-            style: TextStyle(fontSize: 20.0),
-          ),
-          chartWidget
-        ],
+      body:SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Hero(
+              tag: "me",
+              child: Image.asset('assets/images/me.jpg'),
+            ),
+            stars,
+            Text(
+              "Trying being open-minded:",
+              style: TextStyle(fontSize: 20.0),
+            ),
+            chartWidget
+          ],
+        ),
       ),
     );
   }
@@ -75,4 +80,72 @@ class ClicksPerYear {
   ClicksPerYear(this.year, this.clicks, Color color)
       : this.color = charts.Color(
       r: color.red, g: color.green, b: color.blue, a: color.alpha);
+}
+
+class FavoriteWidget extends StatefulWidget {
+  @override
+  _FavoriteWidgetState createState() => _FavoriteWidgetState();
+}
+
+class _FavoriteWidgetState extends State<FavoriteWidget> {
+  // ···
+  int _favoriteCount = 0;
+
+  void toggleFavorite( int favoriteCount ) {
+    setState(() {
+
+        _favoriteCount += favoriteCount;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          padding: EdgeInsets.all(0),
+          child: IconButton(
+            icon: (_favoriteCount == 1 ? Icon(Icons.star) : Icon(Icons.star_border)),
+            color: Colors.red[500],
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.all(0),
+          child: IconButton(
+            icon: (_favoriteCount> 1 ? Icon(Icons.star) : Icon(Icons.star_border)),
+            color: Colors.red[500],
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.all(0),
+          child: IconButton(
+            icon: (_favoriteCount> 2 ? Icon(Icons.star) : Icon(Icons.star_border)),
+            color: Colors.red[500],
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.all(0),
+          child: IconButton(
+            icon: (_favoriteCount > 3 ? Icon(Icons.star) : Icon(Icons.star_border)),
+            color: Colors.red[500],
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.all(0),
+          child: IconButton(
+            icon: (_favoriteCount> 4 ? Icon(Icons.star) : Icon(Icons.star_border)),
+            color: Colors.red[500],
+          ),
+        ),
+
+        SizedBox(
+          width: 18,
+          child: Container(
+            child: Text('$_favoriteCount'),
+          ),
+        ),
+      ],
+    );
+  }
 }
