@@ -78,7 +78,8 @@ class DashboardPage extends StatelessWidget {
             SizedBox(height: 40),
             RichText(
                 text: TextSpan(
-                    style: TextStyle(fontStyle: FontStyle.normal,color: Colors.black, fontSize: 23),
+                    style: TextStyle(fontStyle: FontStyle.normal,color: Colors.black, fontSize: 23
+                    ),
                     children: <TextSpan>[
                       TextSpan(text: '.Net developer', style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -94,6 +95,10 @@ class DashboardPage extends StatelessWidget {
                       ))
                     ]
                 )
+            ),
+            Text(
+              'Zaaap..',
+              style: TextStyle(fontFamily: 'Bombing',height: 10, fontWeight: FontWeight.bold,),
             ),
             RaisedButton(
               textColor: Colors.white,
