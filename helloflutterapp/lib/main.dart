@@ -120,15 +120,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   print(nameController.text);
                   print(passwordController.text);
 
-                  //Navigator.push(
-                  //  context,
-                  //  MaterialPageRoute(builder: (context) => DashboardPage(todo: nameController.text)),
-                  //);
-
                   Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => MoreDetailPage())
-                      );
+                    context,
+                    MaterialPageRoute(builder: (context) => DashboardPage(todo: nameController.text)),
+                  );
+
+                  //Navigator.push(
+                  //      context,
+                  //      MaterialPageRoute(builder: (context) => MoreDetailPage())
+                  //    );
 
                 },
               ),

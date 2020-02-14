@@ -15,61 +15,62 @@ class DashboardPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(todo),
       ),
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.all(16.0),
-          child:  Stack(
-            overflow: Overflow.visible,
-            alignment: AlignmentDirectional.center,
-            children: <Widget>[
-              Positioned(
-                bottom: -50,
-                right: -50,
-                child: Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.deepOrangeAccent,
-                  child: SizedBox(),
-                ),
-              ),
-              Opacity(
-                opacity: 1,
-                child: Container(
-                    width: 100,
+      body: Column(
+        children: <Widget>[
+          SizedBox(height: 150),
+          Padding(
+            padding: EdgeInsets.all(30),
+            child:  Stack(
+              overflow: Overflow.visible,
+              alignment: AlignmentDirectional.center,
+              children: <Widget>[
+                Positioned(
+                  bottom: -50,
+                  right: -50,
+                  child: Container(
                     height: 100,
-                    color: Colors.green,
-                    child: SizedBox()
-                ),
-              ),
-              Positioned(
-                top: -50,
-                left: -50,
-                child: Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.blueAccent,
-                  child: SizedBox(),
-                ),
-              ),
-              Positioned(
-                bottom: 200,
-                child: RichText(
-                  text: TextSpan(
-                      style: TextStyle(color: Colors.cyan, fontSize: 30, fontWeight: FontWeight.bold),
-                      children: <TextSpan>[
-                        TextSpan(text: "Welcome "),
-                        TextSpan(text: todo , style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            color: Colors.blueAccent,
-                            fontStyle: FontStyle.italic
-                        ))
-                      ]
+                    width: 100,
+                    color: Colors.blueAccent,
+                    child: SizedBox(),
                   ),
                 ),
-              )
-            ],
+                Opacity(
+                  opacity: 1,
+                  child: Container(
+                      width: 100,
+                      height: 100,
+                      color: Colors.green,
+                      child: SizedBox()
+                  ),
+                ),
+                Positioned(
+                  top: -50,
+                  left: -50,
+                  child: Hero(
+                    tag: "me",
+                    child: Image.asset('assets/images/me.jpg' , height: 100),
+                  ),
+                ),
+                Positioned(
+                  bottom: 200,
+                  child: RichText(
+                    text: TextSpan(
+                        style: TextStyle(color: Colors.cyan, fontSize: 30, fontWeight: FontWeight.bold),
+                        children: <TextSpan>[
+                          TextSpan(text: "Welcome "),
+                          TextSpan(text: todo , style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              color: Colors.blueAccent,
+                              fontStyle: FontStyle.italic
+                          ))
+                        ]
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
-        ),
+        ],
       ),
 
     );
