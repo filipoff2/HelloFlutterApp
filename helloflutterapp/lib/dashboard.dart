@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'detailPage.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -51,9 +50,19 @@ class DashboardPage extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    child: Hero(
-                      tag: "me",
-                      child: Image.asset('assets/images/me.jpg', height: 100),
+                    child: GestureDetector(
+                      onTap: (){
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => DetailPage(todo: todo)),
+                        );
+
+                      },
+                      child: Hero(
+                        tag: "me",
+                        child: Image.asset('assets/images/me.jpg', height: 100),
+                      ),
                     ),
                   ),
                   Positioned(
@@ -117,7 +126,6 @@ class DashboardPage extends StatelessWidget {
           ],
         ),
       ),
-
     );
   }
 }
