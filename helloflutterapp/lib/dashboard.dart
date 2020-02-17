@@ -5,7 +5,6 @@ import 'detailPage.dart';
 class DashboardPage extends StatelessWidget {
   // Declare a field that holds the Todo.
   String todo;
-
   // In the constructor, require a Todo.
   DashboardPage({@required this.todo});
 
@@ -122,7 +121,6 @@ class DashboardPage extends StatelessWidget {
 
               },
             ),
-
           ],
         ),
       ),
