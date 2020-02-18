@@ -4,16 +4,27 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:helloflutterapp/providers/StarsCounter.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flare_flutter/flare_actor.dart';
+import 'package:flare_flutter/flare_controller.dart';
+
+
 
 class DetailPage extends StatelessWidget {
   // Declare a field that holds the Todo.
   String todo;
 
+
   // In the constructor, require a Todo.
-  DetailPage({@required this.todo});
+   final FlareController controller;
+
+
+
+  DetailPage({Key key, this.controller, @required this.todo}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
+
     var data = [
       ClicksPerYear('Flash', 15, Colors.red),
       ClicksPerYear('JAVA', 50, Colors.deepOrange),
@@ -79,7 +90,24 @@ class DetailPage extends StatelessWidget {
                     "Trying being open-minded:",
                     style: TextStyle(fontSize: 20.0),
                   ),
-                  chartWidget
+                  chartWidget,
+                  Container(
+                    width: 100,
+                    height: 100,
+                    child: FlareActor(
+
+                      "assets/CyberGuss.flr",
+
+                      shouldClip: false,
+
+                      alignment: Alignment.topCenter,
+
+                      fit: BoxFit.cover,
+
+                      controller: controller ,
+
+                    ),
+                  ),
                 ],
               );
             },
