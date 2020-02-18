@@ -106,7 +106,11 @@ class DashboardPage extends StatelessWidget {
             ),
             Text(
               'Zaaap..',
-              style: TextStyle(fontFamily: 'Bombing',height: 10, fontWeight: FontWeight.bold,),
+              style: TextStyle(
+                fontFamily: 'Bombing',
+                fontSize: 40,
+                fontWeight: FontWeight.bold,
+                color: Colors.purple),
             ),
             RaisedButton(
               textColor: Colors.white,
