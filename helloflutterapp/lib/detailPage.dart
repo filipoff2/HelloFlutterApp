@@ -4,6 +4,7 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:helloflutterapp/providers/StarsCounter.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get_it/get_it.dart';
 
 class DetailPage extends StatelessWidget {
   // Declare a field that holds the Todo.
@@ -14,6 +15,9 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GetIt.instance.registerSingleton<StarsCounter>(StarsCounter());
+    var counter = GetIt.instance.get<StarsCounter>();
+
     var data = [
       ClicksPerYear('Flash', 15, Colors.red),
       ClicksPerYear('JAVA', 50, Colors.deepOrange),
@@ -50,41 +54,30 @@ class DetailPage extends StatelessWidget {
     var stars = FavoriteWidget();
     //stars.toggleFavorite(3);
 
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (counter) => StarsCounter(),
-        ),
-      ],
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(todo),
-        ),
-        body: SingleChildScrollView(
-          child: Consumer<StarsCounter>(
-            builder: (context, counter, _) {
-              return Column(
-                children: <Widget>[
-                  GestureDetector(
-                    onTap: () {
-                       counter.setStars(counter.count + 1);
-                    },
-                    child: Hero(
-                      tag: "me",
-                      child: Image.asset('assets/images/me.jpg'),
-                    ),
-                  ),
-                  stars,
-                  Text(
-                    "Trying being open-minded:",
-                    style: TextStyle(fontSize: 20.0),
-                  ),
-                  chartWidget
-                ],
-              );
-            },
-          ),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(todo),
+      ),
+      body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              GestureDetector(
+                onTap: () {
+                  counter.setStars(counter.count + 1);
+                },
+                child: Hero(
+                  tag: "me",
+                  child: Image.asset('assets/images/me.jpg'),
+                ),
+              ),
+              stars,
+              Text(
+                "Trying being open-minded:",
+                style: TextStyle(fontSize: 20.0),
+              ),
+              chartWidget
+            ],
+          )
       ),
     );
   }
@@ -97,7 +90,7 @@ class ClicksPerYear {
 
   ClicksPerYear(this.year, this.clicks, Color color)
       : this.color = charts.Color(
-            r: color.red, g: color.green, b: color.blue, a: color.alpha);
+      r: color.red, g: color.green, b: color.blue, a: color.alpha);
 }
 
 class FavoriteWidget extends StatefulWidget {
@@ -108,7 +101,7 @@ class FavoriteWidget extends StatefulWidget {
 
 class _FavoriteWidgetState extends State<FavoriteWidget> {
   // ···
-  int _favoriteCount = 0;
+  int _favoriteCount = GetIt.instance.get<StarsCounter>().count;
 
   void toggleFavorite(int favoriteCount) {
     setState(() {
@@ -118,7 +111,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
 
   @override
   Widget build(BuildContext context) {
-    var counter = Provider.of<StarsCounter>(context, listen: true);
+    var counter = GetIt.instance.get<StarsCounter>();
     _favoriteCount = counter.count;
     print('_favoriteCount ${_favoriteCount}');
 
